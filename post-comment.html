@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
+<script src="app.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body ng-app="myApp" ng-controller="postCommentController">
+
+<div class="container">
+  <div class="well" ng-repeat="x in postList">
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">{{ x.title }}</h4>
+            <div ng-view></div>
+            <p>{{ x.body }}</p>
+            <ul class="list-inline list-unstyled">
+              <li>
+                <button ng-click="getComment(x); gotoRoute()" class="btn btn-info btn-circle glyphicon glyphicon-share-alt">View Comments</button>
+              </li>
+            </ul>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="panel panel-default widget" >
+    <div class="panel-heading">
+      <span class="glyphicon glyphicon-comment"></span>
+      <h2 class="panel-title" id="divRoute">Comments</h2>
+    </div>
+
+    <div class="panel-body">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="comment in commentList">
+            <div class="row">
+              <div class="col-xs-10 col-md-11">
+                <div>
+                  <span id="commentbody">"{{comment.body}}"</span>
+                      <div class="mic-info" id="mic-info">Name: <span>{{comment.name}}</span> 
+                      </div>
+                </div>
+                <div class="comment-text">E-mail: <span>{{comment.email}}</span>
+                </div>
+                                
+              </div>
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
